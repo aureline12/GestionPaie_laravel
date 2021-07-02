@@ -70,9 +70,9 @@ class UserController extends Controller
 
         request()->validate([
             'profile'       => 'sometimes|mimes:jpeg,jpg,png|max:5000',
-            'name'          =>    'required|string',
-            'telephone'     => 'required|unique:user|string|min:9',
-            'email'         => 'required|email|max:256|unique:users|regex:/^([a-z0-9\+_\-]+)(\.[a-z0-9\+_\-]+)*@([a-z0-9\-]+\.)+[a-z]{2,6}$/ix',
+            'name'          => 'required|string',
+            'telephone'     => 'required|string|min:9',
+            'email'         => 'required|email|max:256|regex:/^([a-z0-9\+_\-]+)(\.[a-z0-9\+_\-]+)*@([a-z0-9\-]+\.)+[a-z]{2,6}$/ix',
 
         ]);
 
