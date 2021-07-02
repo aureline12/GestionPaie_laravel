@@ -2,17 +2,6 @@
 
 @section('col')
     <div class="subheader py-2 py-lg-6 subheader-solid" id="kt_subheader">
-        <!--begin::Title-->
-        <h5 class="text-dark font-weight-bold mt-2 mb-2 mr-5">Users</h5>
-        <!--end::Title-->
-        <!--begin::Separator-->
-        <div class="subheader-separator subheader-separator-ver mt-2 mb-2 mr-5 bg-gray-200"></div>
-        <!--end::Separator-->
-        <!--begin::Search Form-->
-        <div class="d-flex align-items-center" id="kt_subheader_search">
-            <span class="text-dark-50 font-weight-bold" id="kt_subheader_total">User Profil</span>
-        </div>
-        <!--end::Search Form-->
         
     </div>
 @endsection
@@ -94,8 +83,7 @@ body{
                     <img  src="{{asset('/storage/images/'.Auth::user()->profile)}}" alt="Admin" class="rounded-circle" width="150"/>
                     <div class="mt-3">
                       <h4>{{ Auth::user()->name }}</h4>
-                      <p class="text-secondary mb-1">Full Stack Developer</p>
-                      <p class="text-muted font-size-sm">Bay Area, San Francisco, CA</p>
+                      
                       <a href="edit-profil/{{ Auth::user()->id }}" class="btn btn-primary">Edit Profil</a>
                       
                     </div>
