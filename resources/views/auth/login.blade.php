@@ -41,7 +41,7 @@ License: You must have a valid license purchased only from themeforest(the above
 	</head>
 	<!--end::Head-->
 	<!--begin::Body-->
-	<body id="kt_body" class="header-fixed header-mobile-fixed subheader-enabled subheader-fixed aside-enabled aside-fixed aside-minimize-hoverable page-loading">
+	<body id="kt_body" class="  header-fixed header-mobile-fixed subheader-enabled subheader-fixed aside-enabled aside-fixed aside-minimize-hoverable page-loading">
 		<!--begin::Main-->
 		<div class="d-flex flex-column flex-root">
 			<!--begin::Login-->
@@ -52,8 +52,8 @@ License: You must have a valid license purchased only from themeforest(the above
 						<div class="login-wrapper">
 							<!--begin:Aside Content-->
 							<div class="text-dark-75">
-								<a href="#">
-									<img src="assets/media/logos/logo-letter-13.png" class="max-h-75px" alt="" />
+								<a href="index.html" class="brand-logo">
+									<img alt="Logo" width="120px" heigth="120px" src="{{ asset('images/logo.png') }}" />
 								</a>
 								<h3 class="mb-8 mt-22 font-weight-bold">JOIN OUR GREAT COMMUNITY</h3>
 								<p class="mb-15 text-muted font-weight-bold">The ultimate Bootstrap &amp; Angular 6 admin theme framework for next generation web apps.</p>
@@ -80,10 +80,10 @@ License: You must have a valid license purchased only from themeforest(the above
 								<form class="form text-left" action="{{ route('login') }}" method="POST">
                                     @csrf
 									<div class="form-group py-2 m-0">
-										<input class="form-control h-auto border-0 px-0 placeholder-dark-75" type="email" placeholder="Email" name="email"  />
+										<input style="background-color: rgba(204, 204, 204, 0.726);" class="pl-2 form-control h-auto border-0 px-0 placeholder-dark-75" type="email" placeholder="Email" name="email"  />
 									</div>
 									<div class="form-group py-2 m-0">
-										<input class="form-control h-auto border-0 px-0 placeholder-dark-75" type="Password" placeholder="Password" name="password" />
+										<input style="background-color: rgba(204, 204, 204, 0.726);" class="pl-2 form-control h-auto border-0 px-0 placeholder-dark-75" type="Password" placeholder="Password" name="password" />
 									</div>
 									<div class="form-group d-flex flex-wrap justify-content-between align-items-center mt-5">
 										<div class="checkbox-inline">

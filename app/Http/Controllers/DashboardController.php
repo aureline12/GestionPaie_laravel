@@ -15,6 +15,7 @@ class DashboardController extends Controller
 {
     public function index(){
         $totalEmploye = DB::table('employe')->where('status',1)->count();
+        $totalUser = DB::table('users')->where('status',1)->count();
         $totalCaisse  = DB::table('total_caisses')->SUM('total_caisse');
         $totalTransactionInt = DB::table('transaction_ints')->count();
         $totalTransactionOut = DB::table('transaction_outs')->count();
@@ -44,7 +45,7 @@ class DashboardController extends Controller
         $transactionIntAll = TransactionInt::orderByDesc('created_at')->take(2)->get();
         $transactionOutAll = TransactionOut::orderByDesc('created_at')->take(3)->get();
 
-        return view('index' , compact('employeAll','totalEmploye','totalCaisse','totalTransactionInt','totalTransactionOut','employeRandom','tansactionAll','classNameInt','transactionIntAll','transactionOutAll'));
+        return view('index' , compact('totalUser','employeAll','totalEmploye','totalCaisse','totalTransactionInt','totalTransactionOut','employeRandom','tansactionAll','classNameInt','transactionIntAll','transactionOutAll'));
     }
 }
 

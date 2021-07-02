@@ -55,24 +55,30 @@ License: You must have a valid license purchased only from themeforest(the above
             color: #606060 !important;
         }
 
-        .theme{
+        .theme {
             background-color: #7aa97a !important;
         }
-        .theme-dark{
+
+        .theme-dark {
             background-color: #254225 !important;
         }
-        .theme-yellow{
+
+        .theme-yellow {
             background-color: #ffff00cc !important;
         }
-        .bg.bg-primary,.text-primary{
+
+        .bg.bg-primary,
+        .text-primary {
             background-color: #ffff00cc !important;
             color: #fff !important;
         }
-        .btn-theme{
+
+        .btn-theme {
             background-color: #eeee23 !important;
-            color:#fff !important;
+            color: #fff !important;
             box-shadow: 0px 0px 2px rgba(204, 204, 204, 0.267);
         }
+
     </style>
 </head>
 <!--end::Head-->
@@ -128,7 +134,8 @@ License: You must have a valid license purchased only from themeforest(the above
         <!--begin::Page-->
         <div class="d-flex flex-row flex-column-fluid page">
             <!--begin::Aside-->
-            <div class="theme-yellow theme-dark aside aside-left aside-fixed d-flex flex-column flex-row-auto" id="kt_aside">
+            <div class="theme-yellow theme-dark aside aside-left aside-fixed d-flex flex-column flex-row-auto"
+                id="kt_aside">
                 <!--begin::Brand-->
                 <div class="theme-yellow brand flex-column-auto" id="kt_brand">
                     <!--begin::Logo-->
@@ -163,8 +170,8 @@ License: You must have a valid license purchased only from themeforest(the above
                 <!--begin::Aside Menu-->
                 <div class=" theme-dark aside-menu-wrapper flex-column-fluid" id="kt_aside_menu_wrapper">
                     <!--begin::Menu Container-->
-                    <div id="kt_aside_menu" class="theme-dark aside-menu my-4" data-menu-vertical="1" data-menu-scroll="1"
-                        data-menu-dropdown-timeout="500">
+                    <div id="kt_aside_menu" class="theme-dark aside-menu my-4" data-menu-vertical="1"
+                        data-menu-scroll="1" data-menu-dropdown-timeout="500">
                         <!--begin::Menu Nav-->
                         <ul class="menu-nav">
                             <li class="menu-item" id="menu-item" aria-haspopup="true">
@@ -412,19 +419,21 @@ License: You must have a valid license purchased only from themeforest(the above
                                 </a>
                             </li>
 
-                            
+
 
                             <li class="menu-item" id="menu-item" aria-haspopup="true">
                                 <a href="/users" class="menu-link {{ navLink('/users') }}">
                                     <span class="svg-icon menu-icon">
                                         <!--begin::Svg Icon | path:assets/media/svg/icons/Shopping/Barcode-read.svg-->
-                                        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="32pt"
-                                        height="32pt" viewBox="0 0 32 32" version="1.1">
-                                        <g id="surface1">
-                                            <path style=" stroke:none;fill-rule:nonzero;fill:#2684B7;fill-opacity:1;"
-                                                d="M 16 5 C 12.144531 5 9 8.144531 9 12 C 9 14.40625 10.230469 16.539063 12.089844 17.796875 C 8.515625 19.324219 6 22.875 6 27 L 8 27 C 8 23.472656 10.269531 20.496094 13.425781 19.425781 L 15.75 21.75 L 14 27 L 16 29 L 18 27 L 16.25 21.75 L 18.574219 19.425781 C 21.730469 20.496094 24 23.472656 24 27 L 26 27 C 26 22.875 23.484375 19.324219 19.910156 17.796875 C 21.769531 16.539063 23 14.40625 23 12 C 23 8.144531 19.855469 5 16 5 Z M 16 7 C 18.773438 7 21 9.226563 21 12 C 21 14.773438 18.773438 17 16 17 C 13.226563 17 11 14.773438 11 12 C 11 9.226563 13.226563 7 16 7 Z M 24 8.070313 L 24 10.105469 C 25.804688 10.453125 27 11.746094 27 13.5 C 27 15.253906 25.804688 16.546875 24 16.894531 L 24 19.09375 C 26.796875 19.585938 29 22.089844 29 25 L 31 25 C 31 21.980469 29.21875 19.289063 26.675781 17.933594 C 28.113281 16.957031 29 15.382813 29 13.5 C 29 10.628906 26.949219 8.472656 24 8.070313 Z M 8 8.078125 C 5.089844 8.488281 3 10.679688 3 13.5 C 3 15.382813 3.886719 16.957031 5.324219 17.933594 C 2.78125 19.289063 1 21.980469 1 25 L 3 25 C 3 22.089844 5.203125 19.585938 8 19.09375 L 8 16.894531 C 6.195313 16.546875 5 15.253906 5 13.5 C 5 11.777344 6.21875 10.46875 8 10.109375 Z " />
-                                        </g>
-                                    </svg>
+                                        <svg xmlns="http://www.w3.org/2000/svg"
+                                            xmlns:xlink="http://www.w3.org/1999/xlink" width="32pt" height="32pt"
+                                            viewBox="0 0 32 32" version="1.1">
+                                            <g id="surface1">
+                                                <path
+                                                    style=" stroke:none;fill-rule:nonzero;fill:#2684B7;fill-opacity:1;"
+                                                    d="M 16 5 C 12.144531 5 9 8.144531 9 12 C 9 14.40625 10.230469 16.539063 12.089844 17.796875 C 8.515625 19.324219 6 22.875 6 27 L 8 27 C 8 23.472656 10.269531 20.496094 13.425781 19.425781 L 15.75 21.75 L 14 27 L 16 29 L 18 27 L 16.25 21.75 L 18.574219 19.425781 C 21.730469 20.496094 24 23.472656 24 27 L 26 27 C 26 22.875 23.484375 19.324219 19.910156 17.796875 C 21.769531 16.539063 23 14.40625 23 12 C 23 8.144531 19.855469 5 16 5 Z M 16 7 C 18.773438 7 21 9.226563 21 12 C 21 14.773438 18.773438 17 16 17 C 13.226563 17 11 14.773438 11 12 C 11 9.226563 13.226563 7 16 7 Z M 24 8.070313 L 24 10.105469 C 25.804688 10.453125 27 11.746094 27 13.5 C 27 15.253906 25.804688 16.546875 24 16.894531 L 24 19.09375 C 26.796875 19.585938 29 22.089844 29 25 L 31 25 C 31 21.980469 29.21875 19.289063 26.675781 17.933594 C 28.113281 16.957031 29 15.382813 29 13.5 C 29 10.628906 26.949219 8.472656 24 8.070313 Z M 8 8.078125 C 5.089844 8.488281 3 10.679688 3 13.5 C 3 15.382813 3.886719 16.957031 5.324219 17.933594 C 2.78125 19.289063 1 21.980469 1 25 L 3 25 C 3 22.089844 5.203125 19.585938 8 19.09375 L 8 16.894531 C 6.195313 16.546875 5 15.253906 5 13.5 C 5 11.777344 6.21875 10.46875 8 10.109375 Z " />
+                                            </g>
+                                        </svg>
                                         <!--end::Svg Icon-->
                                     </span>
                                     <span class="menu-text">Users</span>
