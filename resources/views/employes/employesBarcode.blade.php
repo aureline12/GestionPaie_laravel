@@ -27,8 +27,8 @@
                 <a href="#" class=""></a>
                 <!--end::Button-->
                 <!--begin::Button-->
-                <button class="btn btn-primary font-weight-bold py-2 px-5 ml-2" data-toggle="modal"
-                    data-target="#exampleModal">télecharger le code barre de tous le employés &nbsp;<i class="fas fa-download"></i></button>
+                <button class="btn btn-theme font-weight-bold py-2 px-5 ml-2" data-toggle="modal"
+                    data-target="#exampleModal">télecharger le code barre de tous le employés &nbsp;<i class="fas fa-download" style="color: #fff;"></i></button>
                 <!--end::Button-->
             </div>
             <!--end::Toolbar-->
@@ -44,7 +44,7 @@
                 <div class="row">
                     <div class="col-md-5">
                         <div class="form">
-                            <input type="text" placeholder="Rechercher un employé" class="form-control">
+                            {{-- <input type="text" placeholder="Rechercher un employé" class="form-control"> --}}
                         </div>
                     </div>
                     <div class="col-md-7"></div>
@@ -58,7 +58,7 @@
                                 <strong>{{ $barcode->employe->noms_prenoms }}</strong>
                                 <div class="span">{{ $barcode->employe->matricule }}</div>
                             </div>
-                            <a href="/download/{{ $barcode->employe->id }}/barcode" class="btn btn-primary">Télécharger &nbsp;<i class="fas fa-download"></i></a>
+                            <a href="/download/{{ $barcode->employe->id }}/barcode" class="btn btn-theme">Télécharger &nbsp;<i style="color:#fff" class="fas fa-download"></i></a>
                         </div>
                     @empty
                         Aucun employe

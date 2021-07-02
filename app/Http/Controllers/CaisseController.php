@@ -82,7 +82,7 @@ class CaisseController extends Controller
         }
         // total employer
         $employes = DB::table('employe')->where('status', '1')->get();
-        $totalEmployes =  DB::table('employe')->count();
+        $totalEmployes =  DB::table('employe')->where('status', '1')->count();
 
         // montant par employer
         $mtEmploye =  (request('montant') / $totalEmployes);

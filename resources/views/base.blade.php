@@ -55,37 +55,31 @@ License: You must have a valid license purchased only from themeforest(the above
             color: #606060 !important;
         }
 
-        .theme {
+        .theme{
             background-color: #7aa97a !important;
         }
-
-        .theme-dark {
+        .theme-dark{
             background-color: #254225 !important;
         }
-
-        .theme-yellow {
+        .theme-yellow{
             background-color: #ffff00cc !important;
         }
-
-        .bg.bg-primary,
-        .text-primary {
+        .bg.bg-primary,.text-primary{
             background-color: #ffff00cc !important;
             color: #fff !important;
         }
-
-        .btn-theme {
+        .btn-theme{
             background-color: #eeee23 !important;
-            color: #fff !important;
+            color:#fff !important;
             box-shadow: 0px 0px 2px rgba(204, 204, 204, 0.267);
         }
-
     </style>
 </head>
 <!--end::Head-->
 <!--begin::Body-->
 
 <body id="kt_body"
-    class="header-fixed header-mobile-fixed subheader-enabled subheader-fixed aside-enabled aside-fixed aside-minimize-hoverable page-loading">
+    class="theme header-fixed header-mobile-fixed subheader-enabled subheader-fixed aside-enabled aside-fixed aside-minimize-hoverable page-loading">
     <!--begin::Main-->
     <!--begin::Header Mobile-->
     <div id="kt_header_mobile" class="header-mobile align-items-center header-mobile-fixed">
@@ -134,12 +128,12 @@ License: You must have a valid license purchased only from themeforest(the above
         <!--begin::Page-->
         <div class="d-flex flex-row flex-column-fluid page">
             <!--begin::Aside-->
-            <div class="aside aside-left aside-fixed d-flex flex-column flex-row-auto" id="kt_aside">
+            <div class="theme-yellow theme-dark aside aside-left aside-fixed d-flex flex-column flex-row-auto" id="kt_aside">
                 <!--begin::Brand-->
-                <div class="brand flex-column-auto" id="kt_brand">
+                <div class="theme-yellow brand flex-column-auto" id="kt_brand">
                     <!--begin::Logo-->
                     <a href="index.html" class="brand-logo">
-                        <img alt="Logo" src="assets/media/logos/logo-light.png" />
+                        <img alt="Logo" width="65px" heigth="65px" src="{{ asset('images/logo.png') }}" />
                     </a>
                     <!--end::Logo-->
                     <!--begin::Toggle-->
@@ -167,9 +161,9 @@ License: You must have a valid license purchased only from themeforest(the above
                 </div>
                 <!--end::Brand-->
                 <!--begin::Aside Menu-->
-                <div class="aside-menu-wrapper flex-column-fluid" id="kt_aside_menu_wrapper">
+                <div class=" theme-dark aside-menu-wrapper flex-column-fluid" id="kt_aside_menu_wrapper">
                     <!--begin::Menu Container-->
-                    <div id="kt_aside_menu" class="aside-menu my-4" data-menu-vertical="1" data-menu-scroll="1"
+                    <div id="kt_aside_menu" class="theme-dark aside-menu my-4" data-menu-vertical="1" data-menu-scroll="1"
                         data-menu-dropdown-timeout="500">
                         <!--begin::Menu Nav-->
                         <ul class="menu-nav">
@@ -418,65 +412,19 @@ License: You must have a valid license purchased only from themeforest(the above
                                 </a>
                             </li>
 
+                            
 
                             <li class="menu-item" id="menu-item" aria-haspopup="true">
                                 <a href="/users" class="menu-link {{ navLink('/users') }}">
                                     <span class="svg-icon menu-icon">
                                         <!--begin::Svg Icon | path:assets/media/svg/icons/Shopping/Barcode-read.svg-->
-                                        <svg xmlns="http://www.w3.org/2000/svg"
-                                            xmlns:xlink="http://www.w3.org/1999/xlink" width="10pt" height="10pt"
-                                            viewBox="0 0 20 20" version="1.1">
-                                            <g id="surface1">
-                                                <path
-                                                    style=" stroke:none;fill-rule:nonzero;fill:#DFF0FE;fill-opacity:1;"
-                                                    d="M 18.25 8.5 C 18.25 9.742188 17.242188 10.75 16 10.75 C 14.757813 10.75 13.75 9.742188 13.75 8.5 C 13.75 7.257813 14.757813 6.25 16 6.25 C 17.242188 6.25 18.25 7.257813 18.25 8.5 Z " />
-                                                <path
-                                                    style=" stroke:none;fill-rule:nonzero;fill:#4788C7;fill-opacity:1;"
-                                                    d="M 16 6.5 C 17.101563 6.5 18 7.398438 18 8.5 C 18 9.601563 17.101563 10.5 16 10.5 C 14.898438 10.5 14 9.601563 14 8.5 C 14 7.398438 14.898438 6.5 16 6.5 M 16 6 C 14.621094 6 13.5 7.121094 13.5 8.5 C 13.5 9.878906 14.621094 11 16 11 C 17.378906 11 18.5 9.878906 18.5 8.5 C 18.5 7.121094 17.378906 6 16 6 Z " />
-                                                <path
-                                                    style=" stroke:none;fill-rule:nonzero;fill:#98CCFD;fill-opacity:1;"
-                                                    d="M 12.25 16.25 L 12.25 16 C 12.25 13.933594 13.933594 12.25 16 12.25 C 18.066406 12.25 19.75 13.933594 19.75 16 L 19.75 16.25 Z " />
-                                                <path
-                                                    style=" stroke:none;fill-rule:nonzero;fill:#4788C7;fill-opacity:1;"
-                                                    d="M 16 12.5 C 17.929688 12.5 19.5 14.070313 19.5 16 L 12.5 16 C 12.5 14.070313 14.070313 12.5 16 12.5 M 16 12 C 13.789063 12 12 13.789063 12 16 L 12 16.5 L 20 16.5 L 20 16 C 20 13.789063 18.210938 12 16 12 Z " />
-                                                <path
-                                                    style=" stroke:none;fill-rule:nonzero;fill:#DFF0FE;fill-opacity:1;"
-                                                    d="M 6.25 8.5 C 6.25 9.742188 5.242188 10.75 4 10.75 C 2.757813 10.75 1.75 9.742188 1.75 8.5 C 1.75 7.257813 2.757813 6.25 4 6.25 C 5.242188 6.25 6.25 7.257813 6.25 8.5 Z " />
-                                                <path
-                                                    style=" stroke:none;fill-rule:nonzero;fill:#4788C7;fill-opacity:1;"
-                                                    d="M 4 6.5 C 5.101563 6.5 6 7.398438 6 8.5 C 6 9.601563 5.101563 10.5 4 10.5 C 2.898438 10.5 2 9.601563 2 8.5 C 2 7.398438 2.898438 6.5 4 6.5 M 4 6 C 2.621094 6 1.5 7.121094 1.5 8.5 C 1.5 9.878906 2.621094 11 4 11 C 5.378906 11 6.5 9.878906 6.5 8.5 C 6.5 7.121094 5.378906 6 4 6 Z " />
-                                                <path
-                                                    style=" stroke:none;fill-rule:nonzero;fill:#DFF0FE;fill-opacity:1;"
-                                                    d="M 9.25 3.75 C 9.25 4.855469 8.355469 5.75 7.25 5.75 C 6.144531 5.75 5.25 4.855469 5.25 3.75 C 5.25 2.644531 6.144531 1.75 7.25 1.75 C 8.355469 1.75 9.25 2.644531 9.25 3.75 Z " />
-                                                <path
-                                                    style=" stroke:none;fill-rule:nonzero;fill:#4788C7;fill-opacity:1;"
-                                                    d="M 7.25 2 C 8.214844 2 9 2.785156 9 3.75 C 9 4.714844 8.214844 5.5 7.25 5.5 C 6.285156 5.5 5.5 4.714844 5.5 3.75 C 5.5 2.785156 6.285156 2 7.25 2 M 7.25 1.5 C 6.007813 1.5 5 2.507813 5 3.75 C 5 4.992188 6.007813 6 7.25 6 C 8.492188 6 9.5 4.992188 9.5 3.75 C 9.5 2.507813 8.492188 1.5 7.25 1.5 Z " />
-                                                <path
-                                                    style=" stroke:none;fill-rule:nonzero;fill:#DFF0FE;fill-opacity:1;"
-                                                    d="M 14.75 3.75 C 14.75 4.855469 13.855469 5.75 12.75 5.75 C 11.644531 5.75 10.75 4.855469 10.75 3.75 C 10.75 2.644531 11.644531 1.75 12.75 1.75 C 13.855469 1.75 14.75 2.644531 14.75 3.75 Z " />
-                                                <path
-                                                    style=" stroke:none;fill-rule:nonzero;fill:#4788C7;fill-opacity:1;"
-                                                    d="M 12.75 2 C 13.714844 2 14.5 2.785156 14.5 3.75 C 14.5 4.714844 13.714844 5.5 12.75 5.5 C 11.785156 5.5 11 4.714844 11 3.75 C 11 2.785156 11.785156 2 12.75 2 M 12.75 1.5 C 11.507813 1.5 10.5 2.507813 10.5 3.75 C 10.5 4.992188 11.507813 6 12.75 6 C 13.992188 6 15 4.992188 15 3.75 C 15 2.507813 13.992188 1.5 12.75 1.5 Z " />
-                                                <path
-                                                    style=" stroke:none;fill-rule:nonzero;fill:#98CCFD;fill-opacity:1;"
-                                                    d="M 0.25 16.25 L 0.25 16 C 0.25 13.933594 1.933594 12.25 4 12.25 C 6.066406 12.25 7.75 13.933594 7.75 16 L 7.75 16.25 Z " />
-                                                <path
-                                                    style=" stroke:none;fill-rule:nonzero;fill:#4788C7;fill-opacity:1;"
-                                                    d="M 4 12.5 C 5.929688 12.5 7.5 14.070313 7.5 16 L 0.5 16 C 0.5 14.070313 2.070313 12.5 4 12.5 M 4 12 C 1.789063 12 0 13.789063 0 16 L 0 16.5 L 8 16.5 L 8 16 C 8 13.789063 6.210938 12 4 12 Z " />
-                                                <path
-                                                    style=" stroke:none;fill-rule:nonzero;fill:#DFF0FE;fill-opacity:1;"
-                                                    d="M 12.25 11 C 12.25 12.242188 11.242188 13.25 10 13.25 C 8.757813 13.25 7.75 12.242188 7.75 11 C 7.75 9.757813 8.757813 8.75 10 8.75 C 11.242188 8.75 12.25 9.757813 12.25 11 Z " />
-                                                <path
-                                                    style=" stroke:none;fill-rule:nonzero;fill:#4788C7;fill-opacity:1;"
-                                                    d="M 10 9 C 11.101563 9 12 9.898438 12 11 C 12 12.101563 11.101563 13 10 13 C 8.898438 13 8 12.101563 8 11 C 8 9.898438 8.898438 9 10 9 M 10 8.5 C 8.621094 8.5 7.5 9.621094 7.5 11 C 7.5 12.378906 8.621094 13.5 10 13.5 C 11.378906 13.5 12.5 12.378906 12.5 11 C 12.5 9.621094 11.378906 8.5 10 8.5 Z " />
-                                                <path
-                                                    style=" stroke:none;fill-rule:nonzero;fill:#B6DCFE;fill-opacity:1;"
-                                                    d="M 6.25 18.75 L 6.25 18.5 C 6.25 16.433594 7.933594 14.75 10 14.75 C 12.066406 14.75 13.75 16.433594 13.75 18.5 L 13.75 18.75 Z " />
-                                                <path
-                                                    style=" stroke:none;fill-rule:nonzero;fill:#4788C7;fill-opacity:1;"
-                                                    d="M 10 15 C 11.929688 15 13.5 16.570313 13.5 18.5 L 6.5 18.5 C 6.5 16.570313 8.070313 15 10 15 M 10 14.5 C 7.789063 14.5 6 16.289063 6 18.5 L 6 19 L 14 19 L 14 18.5 C 14 16.289063 12.210938 14.5 10 14.5 Z " />
-                                            </g>
-                                        </svg>
+                                        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="32pt"
+                                        height="32pt" viewBox="0 0 32 32" version="1.1">
+                                        <g id="surface1">
+                                            <path style=" stroke:none;fill-rule:nonzero;fill:#2684B7;fill-opacity:1;"
+                                                d="M 16 5 C 12.144531 5 9 8.144531 9 12 C 9 14.40625 10.230469 16.539063 12.089844 17.796875 C 8.515625 19.324219 6 22.875 6 27 L 8 27 C 8 23.472656 10.269531 20.496094 13.425781 19.425781 L 15.75 21.75 L 14 27 L 16 29 L 18 27 L 16.25 21.75 L 18.574219 19.425781 C 21.730469 20.496094 24 23.472656 24 27 L 26 27 C 26 22.875 23.484375 19.324219 19.910156 17.796875 C 21.769531 16.539063 23 14.40625 23 12 C 23 8.144531 19.855469 5 16 5 Z M 16 7 C 18.773438 7 21 9.226563 21 12 C 21 14.773438 18.773438 17 16 17 C 13.226563 17 11 14.773438 11 12 C 11 9.226563 13.226563 7 16 7 Z M 24 8.070313 L 24 10.105469 C 25.804688 10.453125 27 11.746094 27 13.5 C 27 15.253906 25.804688 16.546875 24 16.894531 L 24 19.09375 C 26.796875 19.585938 29 22.089844 29 25 L 31 25 C 31 21.980469 29.21875 19.289063 26.675781 17.933594 C 28.113281 16.957031 29 15.382813 29 13.5 C 29 10.628906 26.949219 8.472656 24 8.070313 Z M 8 8.078125 C 5.089844 8.488281 3 10.679688 3 13.5 C 3 15.382813 3.886719 16.957031 5.324219 17.933594 C 2.78125 19.289063 1 21.980469 1 25 L 3 25 C 3 22.089844 5.203125 19.585938 8 19.09375 L 8 16.894531 C 6.195313 16.546875 5 15.253906 5 13.5 C 5 11.777344 6.21875 10.46875 8 10.109375 Z " />
+                                        </g>
+                                    </svg>
                                         <!--end::Svg Icon-->
                                     </span>
                                     <span class="menu-text">Users</span>
@@ -1261,22 +1209,17 @@ License: You must have a valid license purchased only from themeforest(the above
                                 <div class="btn btn-icon btn-icon-mobile w-auto btn-clean d-flex align-items-center btn-lg px-2"
                                     id="kt_quick_user_toggle">
                                     <li class="nav-item dropdown">
-
                                         <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
                                             data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                             <img class="image rounded-circle"
                                                 src="{{ asset('/storage/images/' . Auth::user()->profile) }}"
-                                                style="width: 80px;height: 80px; padding: 10px; margin: 0px; ">
+                                                style="width: 57px;height: 57px; padding: 10px; margin: 0px; ">
                                             {{ Auth::user()->name }} <span class="caret"></span>
                                         </a>
 
                                         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                            <a class="dropdown-item" href="/profile">
-                                                User Profile
-                                            </a>
-
                                             <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
-                                                             document.getElementById('logout-form').submit();">
+                                                document.getElementById('logout-form').submit();">
                                                 {{ __('Logout') }}
                                             </a>
 
@@ -1293,14 +1236,15 @@ License: You must have a valid license purchased only from themeforest(the above
                         </div>
                         <!--end::Topbar-->
                     </div>
+
                     <!--end::Container-->
                 </div>
                 <!--end::Header-->
                 <div style="position:relative;overflow: hidden" class="banner" id="">
-                    @yield('banner')
+                    <img style="width: 100%; height: 100%;" src="{{ asset('images/banner.jpg') }}" alt="">
                 </div>
                 <!--begin::Content-->
-                <div class="content d-flex flex-column flex-column-fluid" id="kt_content">
+                <div class="content" id="kt_content">
                     @yield('col')
                     <!--begin::Entry-->
                     <div class="d-flex flex-column-fluid">
@@ -1312,7 +1256,6 @@ License: You must have a valid license purchased only from themeforest(the above
                 </div>
                 <!--end::Content-->
                 <!--begin::Footer-->
-
             </div>
             <!--end::Wrapper-->
         </div>

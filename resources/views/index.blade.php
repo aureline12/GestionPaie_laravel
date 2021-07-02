@@ -1,8 +1,8 @@
 @extends('base')
 
-@section('banner')
-    <img style="width: 100%; height: 100%;" src="{{ asset('images/banner.jpg') }}" alt="">
-@endsection
+{{-- @section('banner')
+    
+@endsection --}}
 
 @section('title')
     Dashboard
@@ -3132,7 +3132,7 @@
                                             @if ($employeRandom->profile)
                                                 <img src="{{ asset('uploads/employes/' . $employeRandom->profile) }}"
                                                     style="object-fit: cover" width="100%" height="100%" class="" alt="" />
-                                @else
+                                            @else
                                                 <img src="{{ asset('uploads/employes/user_100.png') }}" class="card__img" alt="" />
                                             @endif
                                         </div>

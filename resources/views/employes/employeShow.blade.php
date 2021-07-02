@@ -1,9 +1,14 @@
+
 @extends('base')
 
 @section('col')
     <div class="subheader py-2 py-lg-6 subheader-solid" id="kt_subheader">
-
+        <h3 class="pl-4">Profil | {{ $employe->noms_prenoms }}</h3>
     </div>
+@endsection
+
+@section('banner')
+    <img style="width: 100%; height: 100%;" src="{{ asset('images/banner.jpg') }}" alt="">
 @endsection
 
 @section('css')
@@ -109,7 +114,7 @@
                 </div>
                 <div class="row">
                     <div class="col-md-9"></div>
-                    <div class="col-md-3" style="text-align:right"><a href="#" class="btn btn-success">modifier le profil</a></div>
+                    <div class="col-md-3" style="text-align:right"><a href="#" class="btn" style="background-color: #316331;color:#fff">modifier le profil</a></div>
                 </div>
             </div>
             <div class="col-md-4 card p-4 m-4">

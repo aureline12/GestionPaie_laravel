@@ -192,6 +192,7 @@ class TransactionController extends Controller
             
             # date D check
             if($dateDebut && !$dateFin){ 
+    
                 // TI et pas TO
                 if($transactionInt && !$transactionOut){
                     $allTI = [];
@@ -227,6 +228,32 @@ class TransactionController extends Controller
 
                 // TI et TO
                 if($transactionInt && $transactionOut){
+                    $allTI = [];
+                    $allTO = [];
+                    if($trierPar === 'desc'){
+                        $transactionIntAllWidthDate = TransactionInt::orderByDesc('created_at')->get();
+                        $transactionOutAllWidthDate = TransactionOut::orderByDesc('created_at')->get();
+                    }else{
+                        $transactionIntAllWidthDate = TransactionInt::orderBy('created_at')->get();
+                        $transactionOutAllWidthDate = TransactionOut::orderBy('created_at')->get();
+                    }
+                    foreach($transactionIntAllWidthDate as $tId){
+                        if($tId->created_at->format('Y-m-d') === $dateDebut){
+                            $allTI[] = $tId;
+                        }
+                    }
+                    foreach($transactionOutAllWidthDate as $tId){
+                        if($tId->created_at->format('Y-m-d') === $dateDebut){
+                            $allTO[] = $tId;
+                        }
+                    }
+                    $all['transactionInt'] = $allTI;
+                    $all['transactionOut'] = $allTO;
+                    return view('transaction.search',compact('all','token'));
+                }
+
+                // TI et TO
+                if(!$transactionInt && !$transactionOut){
                     $allTI = [];
                     $allTO = [];
                     if($trierPar === 'desc'){
@@ -312,11 +339,35 @@ class TransactionController extends Controller
                     $all['transactionOut'] = $allTO;
                     return view('transaction.search',compact('all','token'));
                 }
+
+                if(!$transactionInt && !$transactionOut){
+                    $allTI = [];
+                    $allTO = [];
+                    if($trierPar === 'desc'){
+                        $transactionIntAllWidthDate = TransactionInt::orderByDesc('created_at')->get();
+                        $transactionOutAllWidthDate = TransactionOut::orderByDesc('created_at')->get();
+                    }else{
+                        $transactionIntAllWidthDate = TransactionInt::orderBy('created_at')->get();
+                        $transactionOutAllWidthDate = TransactionOut::orderBy('created_at')->get();
+                    }
+                    foreach($transactionIntAllWidthDate as $tId){
+                        if($tId->created_at->format('Y-m-d') === $dateFin){
+                            $allTI[] = $tId;
+                        }
+                    }
+                    foreach($transactionOutAllWidthDate as $tId){
+                        if($tId->created_at->format('Y-m-d') === $dateFin){
+                            $allTO[] = $tId;
+                        }
+                    }
+                    $all['transactionInt'] = $allTI;
+                    $all['transactionOut'] = $allTO;
+                    return view('transaction.search',compact('all','token'));
+                }
             }
 
             # date D et F check
             if($dateDebut && $dateFin){
-
                 $dateDebut = new Carbon($dateDebut);
                 $dateFin   = new Carbon($dateFin);
 
@@ -360,6 +411,38 @@ class TransactionController extends Controller
 
                 // TI et TO
                 if($transactionInt && $transactionOut){
+                    $allTI = [];
+                    $allTO = [];
+
+                    $transactionIntAllWidthDate = TransactionInt::whereBetween('created_at', 
+                    [$dateDebut->format('Y-m-d')." 00:00:00", $dateFin->format('Y-m-d')." 23:59:59"]);
+
+                    $transactionOutAllWidthDate = TransactionOut::whereBetween('created_at', 
+                    [$dateDebut->format('Y-m-d')." 00:00:00", $dateFin->format('Y-m-d')." 23:59:59"]);
+
+                    if($trierPar === 'desc'){
+                        $transactionIntAllWidthDate = $transactionIntAllWidthDate->orderByDesc('created_at')->get();
+                        $transactionOutAllWidthDate = $transactionOutAllWidthDate->orderByDesc('created_at')->get();
+                    }else{
+                        $transactionIntAllWidthDate = $transactionIntAllWidthDate->orderBy('created_at')->get();
+                        $transactionOutAllWidthDate = $transactionOutAllWidthDate->orderBy('created_at')->get();
+                    }
+
+                    foreach($transactionIntAllWidthDate as $tId){
+                        $allTI[] = $tId;
+                    }
+
+                    foreach($transactionOutAllWidthDate as $tId){
+                        $allTO[] = $tId;
+                    }
+
+                    $all['transactionInt'] = $allTI;
+                    $all['transactionOut'] = $allTO;
+                    return view('transaction.search',compact('all','token'));
+                }
+
+                // TI et TO
+                if(!$transactionInt && !$transactionOut){
                     $allTI = [];
                     $allTO = [];
 

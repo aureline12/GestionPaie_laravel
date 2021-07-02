@@ -14,12 +14,12 @@ use Illuminate\Support\Facades\DB;
 class DashboardController extends Controller
 {
     public function index(){
-        $totalEmploye = DB::table('employe')->count();
+        $totalEmploye = DB::table('employe')->where('status',1)->count();
         $totalCaisse  = DB::table('total_caisses')->SUM('total_caisse');
         $totalTransactionInt = DB::table('transaction_ints')->count();
         $totalTransactionOut = DB::table('transaction_outs')->count();
 
-        $employeRandom = Employe::all();
+        $employeRandom = Employe::where('status',1)->get();
         $employeRandomArray = [];
         foreach($employeRandom as $employe){
             $employeRandomArray[] = $employe;
@@ -39,7 +39,7 @@ class DashboardController extends Controller
         shuffle($tansactionAll);
         $classNameInt = TransactionInt::class;
 
-        $employeAll   = Employe::orderByDesc('created_at')->take(4)->get();
+        $employeAll   = Employe::where('status',1)->orderByDesc('created_at')->take(4)->get();
 
         $transactionIntAll = TransactionInt::orderByDesc('created_at')->take(2)->get();
         $transactionOutAll = TransactionOut::orderByDesc('created_at')->take(3)->get();

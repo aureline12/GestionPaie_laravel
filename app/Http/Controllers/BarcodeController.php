@@ -21,7 +21,7 @@ class BarcodeController extends Controller
         $employe   = Employe::find($id);
         $generator = new  BarcodeGeneratorJPG();
         $filename  = "matricule/{$employe->noms_prenoms}-{$employe->matricule}.jpg";
-        file_put_contents ($filename , $generator ->getBarcode( "$employe->matricule" , $generator::TYPE_CODE_128 , 3 , 50 , [ 0 , 0 , 0 ] ));
+        file_put_contents ($filename,$generator ->getBarcode( "$employe->matricule" , $generator::TYPE_CODE_128 , 3 , 50 , [ 0 , 0 , 0 ] ));
         $filePath = $filename;
         $filename = basename($filename);
         
