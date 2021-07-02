@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Auth\RegisterController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 
@@ -15,7 +16,6 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
 Route::group(['middleware' =>['auth' , 'super admin']] , function(){  
-    
 
     Route::get('/dash', 'DashboardController@index');
     
@@ -53,6 +53,8 @@ Route::group(['middleware' =>['auth' , 'super admin']] , function(){
     Route::get('/users', 'UserController@index');
     
     Route::get('/profile', 'UserController@profile');
+    Route::get('users/create', 'UserController@create');
+    Route::post('users/store',[RegisterController::class,'create']);
     Route::get('/users/{users}/edit', 'UserController@edit');
     Route::patch('/users/{users}', 'UserController@update');
     Route::get('edit-profil/{id}', 'UserController@editprofil');

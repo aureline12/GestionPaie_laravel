@@ -30,7 +30,7 @@
                 <a href="#" class=""></a>
                 <!--end::Button-->
                 <!--begin::Button-->
-                <a href="{{route('register') }}" class="btn btn-primary font-weight-bolder"><i class="fa fa-plus"></i>Nouveau Utilisateur</a>
+                <a href="{{ url('users/create') }}" class="btn btn-primary font-weight-bolder"><i class="fa fa-plus"></i>Nouveau Utilisateur</a>
                 <!--end::Button-->
             </div>
             <!--end::Toolbar-->

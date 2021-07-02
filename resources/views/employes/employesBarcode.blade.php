@@ -17,8 +17,6 @@
                 <h5 class="text-dark font-weight-bold mt-2 mb-2 mr-5">Code barre</h5>
                 <!--end::Title-->
 
-
-
             </div>
             <!--end::Details-->
             <!--begin::Toolbar-->

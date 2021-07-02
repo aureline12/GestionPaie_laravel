@@ -10,6 +10,7 @@ use Illuminate\Foundation\Auth\RegistersUsers;
 use Symfony\Component\HttpFoundation\Request;
 use Session;
 use Illuminate\Auth\SessionGuard;
+use Illuminate\Support\Facades\Session as FacadesSession;
 
 class RegisterController extends Controller
 {
@@ -40,7 +41,7 @@ class RegisterController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('guest');
+        // $this->middleware('guest');
     }
 
     /**
@@ -67,19 +68,23 @@ class RegisterController extends Controller
      * @param  array  $data
      * @return \App\User
      */
-    protected function create(array $data )
+    protected function create()
     {
+        $data = request()->validate([
+            'name' => ['required', 'string', 'max:255'],
+            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+            'telephone' => ['required', 'string', 'min:9', 'max:9', 'unique:users'],
+            'role' => ['required', 'string', 'max:255'],
+            'password' => ['required', 'string', 'min:8', 'confirmed'],
+        ]);
         User::create([
-           
             'name' => $data['name'],
             'email' => $data['email'],
             'telephone' => $data['telephone'],
             'role' => $data['role'],
             'password' => Hash::make($data['password']),
             ]);
-            Session::flash('statuscode' , 'success');
+            FacadesSession::flash('statuscode' , 'success');
             return  redirect('/users')->with('status' , 'Nouvel Utilisateur Enregistré');
-           
-      
-    }
+        }
 }

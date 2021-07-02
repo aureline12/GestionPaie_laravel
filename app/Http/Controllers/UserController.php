@@ -27,6 +27,10 @@ class UserController extends Controller
    return view('users.useredit',compact('users'));
 }
 
+   public function create(){
+      return view('auth.register');
+   }
+
 public function update(Request $req , $id){
 
    request()->validate([

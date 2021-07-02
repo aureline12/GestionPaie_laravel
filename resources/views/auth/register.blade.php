@@ -45,7 +45,7 @@
                     <div class="row justify-content-center my-10 px-8 my-lg-15 px-lg-10">
                         <div class="col-xl-12 col-xxl-7">
                             <!--begin::Form Wizard Form-->
-                            <form class="form" id="kt_contact_add_form" action="{{ route('register') }}" method="POST"
+                            <form class="form" id="kt_contact_add_form" action="{{ url('/users/store') }}" method="POST"
                                 enctype="multipart/form-data">
                                 @csrf
                                 <!--begin::Form Wizard Step 1-->
@@ -56,9 +56,11 @@
                                             <div class="form-group row">
                                                 <label class="col-xl-3 col-lg-3 col-form-label">Noms</label>
                                                 <div class="col-lg-9 col-xl-9">
-                                                    <input placeholder="Entrer le nom et le prenom de l'utilisateur" class="form-control form-control-lg form-control-solid @error('name') is-invalid @enderror"
-                                                        name="name" type="text" value="{{ old('name') }}" required autocomplete="name" autofocus/>
-                                                        @error('name')
+                                                    <input placeholder="Entrer le nom et le prenom de l'utilisateur"
+                                                        class="form-control form-control-lg form-control-solid @error('name') is-invalid @enderror"
+                                                        name="name" type="text" value="{{ old('name') }}" required
+                                                        autocomplete="name" autofocus />
+                                                    @error('name')
                                                         <span class="invalid-feedback" role="alert">
                                                             <strong>{{ $message }}</strong>
                                                         </span>
@@ -76,12 +78,13 @@
                                                         </div>
                                                         <input type="email"
                                                             class="form-control form-control-lg form-control-solid @error('email') is-invalid @enderror"
-                                                            name="email" value="{{ old('email') }}" required autocomplete="email" placeholder="Email (anna.krox@loop.com)" />
-                                                            @error('email')
-                                                                <span class="invalid-feedback" role="alert">
-                                                                    <strong>{{ $message }}</strong>
-                                                                </span>
-                                                            @enderror
+                                                            name="email" value="{{ old('email') }}" required
+                                                            autocomplete="email" placeholder="Email (anna.krox@loop.com)" />
+                                                        @error('email')
+                                                            <span class="invalid-feedback" role="alert">
+                                                                <strong>{{ $message }}</strong>
+                                                            </span>
+                                                        @enderror
                                                     </div>
                                                 </div>
                                             </div>
@@ -96,8 +99,9 @@
                                                         </div>
                                                         <input type="number"
                                                             class="form-control form-control-lg form-control-solid @error('telephone') is-invalid @enderror"
-                                                            name="telephone" value="{{old('telephone')}}" placeholder="Entrer le numéro de téléphone" />
-                                                            @error('telephone')
+                                                            name="telephone" value="{{ old('telephone') }}"
+                                                            placeholder="Entrer le numéro de téléphone" />
+                                                        @error('telephone')
                                                             <span class="invalid-feedback" role="alert">
                                                                 <strong>{{ $message }}</strong>
                                                             </span>
@@ -109,26 +113,28 @@
                                             <div class="form-group row">
                                                 <label class="col-xl-3 col-lg-3 col-form-label">Role</label>
                                                 <div class="col-lg-9 col-xl-9">
-                                                    <select name="role" 
+                                                    <select name="role"
                                                         class="form-control form-control-lg form-control-solid @error('role') is-invalid @enderror">
                                                         <option value="super admin">super admin</option>
                                                         <option value="admin">admin</option>
                                                         <option value="none">none</option>
                                                     </select>
                                                     @error('role')
-                                                    <span class="invalid-feedback" role="alert">
-                                                        <strong>{{ $message }}</strong>
-                                                    </span>
-                                                @enderror
+                                                        <span class="invalid-feedback" role="alert">
+                                                            <strong>{{ $message }}</strong>
+                                                        </span>
+                                                    @enderror
                                                 </div>
                                             </div>
 
                                             <div class="form-group row">
                                                 <label class="col-xl-3 col-lg-3 col-form-label">Password</label>
                                                 <div class="col-lg-9 col-xl-9">
-                                                    <input type="password" placeholder="Entrer le mot de passe de l'utilisateur" class="form-control form-control-lg form-control-solid @error('password') is-invalid @enderror"
-                                                        name="password"  required autocomplete="new-password"/>
-                                                        @error('password')
+                                                    <input type="password"
+                                                        placeholder="Entrer le mot de passe de l'utilisateur"
+                                                        class="form-control form-control-lg form-control-solid @error('password') is-invalid @enderror"
+                                                        name="password" required autocomplete="new-password" />
+                                                    @error('password')
                                                         <span class="invalid-feedback" role="alert">
                                                             <strong>{{ $message }}</strong>
                                                         </span>
@@ -139,9 +145,12 @@
                                             <div class="form-group row">
                                                 <label class="col-xl-3 col-lg-3 col-form-label">Confirm-password</label>
                                                 <div class="col-lg-9 col-xl-9">
-                                                    <input id="password-confirm" placeholder="Confirmer le mot de passe de l'utilisateur" class="form-control form-control-lg form-control-solid "
-                                                    name="password_confirmation" required autocomplete="new-password" type="password"  />
-                                                   
+                                                    <input id="password-confirm"
+                                                        placeholder="Confirmer le mot de passe de l'utilisateur"
+                                                        class="form-control form-control-lg form-control-solid "
+                                                        name="password_confirmation" required autocomplete="new-password"
+                                                        type="password" />
+
                                                 </div>
                                             </div>
                                         </div>
@@ -151,8 +160,10 @@
                                 <!--begin::Wizard Actions-->
                                 <div class="modal-footer">
                                     <div>
-                                        <button type="submit" class="btn btn-success font-weight-bolder text-uppercase px-9 py-4">Enregistrer</button>
-                                        <a href="/users" class="btn btn-danger font-weight-bolder text-uppercase px-9 py-4">Annuler</a>
+                                        <button type="submit"
+                                            class="btn btn-success font-weight-bolder text-uppercase px-9 py-4">Enregistrer</button>
+                                        <a href="/users"
+                                            class="btn btn-danger font-weight-bolder text-uppercase px-9 py-4">Annuler</a>
                                     </div>
 
                                 </div>
@@ -176,7 +187,7 @@
 @section('scripts')
     <script>
         let fieldsDisabled = document.querySelector('input.disabled')
-        fieldsDisabled.addEventListener('keydown',e=>e.preventDefault())
+        fieldsDisabled.addEventListener('keydown', e => e.preventDefault())
     </script>
 
     <script src="assets/js/pages/custom/contacts/add-contact.js"></script>
