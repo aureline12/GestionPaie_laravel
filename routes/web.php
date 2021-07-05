@@ -52,14 +52,16 @@ Route::group(['middleware' =>['auth' , 'super admin']] , function(){
 
     Route::get('/users', 'UserController@index');
     
-    Route::get('/profile', 'UserController@profile');
-    Route::get('users/create', 'UserController@create');
-    Route::post('users/store',[RegisterController::class,'create']);
-    Route::get('/users/{users}/edit', 'UserController@edit');
+    Route::get('/profile','ProfilController@index');
+    Route::get('/profile/{id}', 'ProfilController@edit');
+    Route::post('profil/update/{id}', 'ProfilController@update');
+
+    Route::get('/users', 'UserController@index');
+    Route::get('users/create','UserController@create');
+    Route::post('users/store','UserController@store');
+    Route::get('/users/{users}/edit','UserController@edit');
     Route::patch('/users/{users}', 'UserController@update');
-    Route::get('edit-profil/{id}', 'UserController@editprofil');
-    Route::post('update-profil/{id}', 'UserController@updateprofil');
-    Route::get('/users/delete/{id}',  'UserController@destroy');
+    Route::get('/users/delete/{id}', 'UserController@destroy');
 
 });
 

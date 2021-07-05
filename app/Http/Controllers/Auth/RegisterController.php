@@ -85,5 +85,5 @@ class RegisterController extends Controller
             ]);
             FacadesSession::flash('statuscode' , 'success');
             return  redirect('/users')->with('status' , 'Nouvel Utilisateur Enregistré');
-        }
+    }
 }

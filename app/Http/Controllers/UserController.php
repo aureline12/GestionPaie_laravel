@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Session;
 
 class UserController extends Controller
@@ -19,9 +20,28 @@ class UserController extends Controller
         return view('users.index', compact('users'));
     }
 
-    public function profile()
+    public function show()
     {
-        return view('profile.profile', array('user' => Auth::user()));
+        return view('users.profil', array('user' => Auth::user()));
+    }
+
+    public function store(){
+        $data = request()->validate([
+            'name'      => ['required', 'string', 'max:255'],
+            'email'     => ['required', 'string', 'email', 'max:255', 'unique:users'],
+            'telephone' => ['required', 'string', 'min:9', 'max:9', 'unique:users'],
+            'role'      => ['required', 'string', 'max:255'],
+            'password'  => ['required', 'string', 'min:8', 'confirmed'],
+        ]);
+        User::create([
+            'name'      => $data['name'],
+            'email'     => $data['email'],
+            'telephone' => $data['telephone'],
+            'role'      => $data['role'],
+            'password'  => Hash::make($data['password']),
+        ]);
+        Session::flash('statuscode' , 'success');
+        return redirect('/users')->with('status' , 'Nouvel Utilisateur Enregistré');
     }
 
     public function edit($id)
@@ -38,15 +58,25 @@ class UserController extends Controller
     public function update(Request $req, $id)
     {
 
-        request()->validate([
-
-            'name'  => 'required|string|min:1|max:256',
-            'telephone'     => 'required|unique:users|string|min:9',
-            'email'         => 'required|email|max:256|unique:employe|regex:/^([a-z0-9\+_\-]+)(\.[a-z0-9\+_\-]+)*@([a-z0-9\-]+\.)+[a-z]{2,6}$/ix',
-            'role'         => 'required|min:1|max:256',
-
-        ]);
         $users = User::find($id);
+
+        if($users->email !== request('email')){
+            request()->validate([
+                'name'      => 'required|string|min:1|max:256',
+                'telephone' => 'required|integer|min:9',
+                'email'     =>'required|email|max:256|unique:employe|regex:/^([a-z0-9\+_\-]+)(\.[a-z0-9\+_\-]+)*@([a-z0-9\-]+\.)+[a-z]{2,6}$/ix',
+                'role'      => 'required|min:1|max:256',
+            ]);
+        }else{
+            request()->validate([
+
+                'name'      => 'required|string|min:1|max:256',
+                'telephone' => 'required|integer|min:9',
+                'role'      => 'required|min:1|max:256',
+
+            ]);
+        }
+        
 
         $users->name = $req->input('name');
         $users->email = $req->input('email');
@@ -64,8 +94,7 @@ class UserController extends Controller
         return view('profile.profileedit')->with('users', $users);
     }
 
-    public function updateprofil(Request $req, $id)
-    {
+    public function updateprofil(Request $req, $id){
 
 
         request()->validate([
@@ -107,10 +136,7 @@ class UserController extends Controller
         $users = User::findOrFail($id);
 
         $destination = 'storage/images/' . $users->profile;
-
-        /* if(File::exists($destination)){
-            File::delete($destination);
-        }*/
+        
         User::where('id', $id)
             ->update(['status' => 0]);
         Session::flash('statuscode', 'error');

@@ -88,10 +88,11 @@
             <div class="row p-4">
                 <div class="col-md-4">
                     <div class="d-flex justify-content-start align-items-center alert bg-light-warning">
+                        &nbsp;&nbsp;
                         <div class="h2" style="transform: translate(4px,4.5px); color:#636369">TOTAL CAISSE 
                             <span style="color:var(--warning);">{{ $caisseTotal }}</span>
                         </div>
-                        <i class="fas fa-dollar-sign" style="font-size: 25px;color:var(--warning); transform:translateX(5px)" ></i>
+                        <div style="color:var(--warning); transform:translate(14px,4px);" class="h2">FCFA</div>
                     </div>
                 </div>
                 <div class="col-md-6">

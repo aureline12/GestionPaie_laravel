@@ -84,7 +84,7 @@ body{
                     <div class="mt-3">
                       <h4>{{ Auth::user()->name }}</h4>
                       
-                      <a href="edit-profil/{{ Auth::user()->id }}" class="btn btn-primary">Edit Profil</a>
+                      <a href="profile/{{ Auth::user()->id }}" class="btn btn-primary">Edit Profil</a>
                       
                     </div>
                   </div>

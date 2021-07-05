@@ -47,7 +47,7 @@
                             <span class="text-muted font-weight-bold font-size-sm mt-1">Mettre à jour</span>
                         </div>
                         <!--begin::Form-->
-                        <form class="form" action="/update-profil/{{$users->id}}" method="POST"
+                        <form class="form" action="/profil/update/{{$users->id}}" method="POST"
                             enctype="multipart/form-data">
                             @csrf
                             <div class="card-toolbar">
