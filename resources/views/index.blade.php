@@ -27,7 +27,7 @@
                 <!--end::Page Title-->
                 <!--begin::Actions-->
                 <div class="subheader-separator subheader-separator-ver mt-2 mb-2 mr-4 bg-gray-200"></div>
-                <a href="#" class="btn btn-theme font-weight-bolder btn-sm">Ajouter un employé</a>
+                <a href="/employe/create" class="btn btn-theme font-weight-bolder btn-sm">Ajouter un employé</a>
                 <!--end::Actions-->
             </div>
             <!--end::Info-->
@@ -346,7 +346,7 @@
                     <div class="card-header align-items-center border-0 mt-4">
                         <h3 class="card-title align-items-start flex-column">
                             <span class="font-weight-bolder text-dark">Dernières Transactions</span>
-                            <span class="text-muted mt-3 font-weight-bold font-size-sm">(4 dernières)</span>
+                            <span class="text-muted mt-3 font-weight-bold font-size-sm">(8 dernières)</span>
                         </h3>
                         <div class="card-toolbar">
                             <div class="dropdown dropdown-inline">
@@ -439,7 +439,7 @@
                                     <div class="d-flex flex-column flex-grow-1">
                                         <a href="#"
                                             class="text-dark-75 text-hover-primary font-weight-bold font-size-lg mb-1"><?= getEmploye($item->id_employe)->noms_prenoms ?></a>
-                                                        <span style="color:#109c10">{{ $item->totalPrimes }} FCFA</span>
+                                                        <span style="color:#109c10">{{ floor($item->totalPrimes) }} FCFA</span>
                                                         <span class="text-muted font-weight-bold">le {{ $item->created_at->format('d M Y \a H\hi ') }}</span>
                                                     </div>
                                                     <!--end::Text-->
@@ -619,7 +619,7 @@
                                     <div class="card-body p-0">
                                         <div class="card__montant">
                                             <span class="card__prime">Montant en caisse</span>
-                                            {{ $totalCaisse }} FCFA
+                                            {{ floor($totalCaisse) }} FCFA
                                         </div>
                                         <a href="{{ url('/caisse') }}" class="card_btn text-cemter"
                                             style="display:inline-block;font-size:20px;border-radius:7px;padding:10px 40px; margin:25px auto; background-color:#3e8c3e; color:#fff">Voir
@@ -2975,19 +2975,19 @@
                                             <div class="card__transaction">
                                                 <div class="card__date">{{ $transaction->created_at->format('d M Y') }} <em style="font-size: 14px;font-weight:lighter">( de la caisse <?= getCaisse($transaction->id_caisse)->montant ?>F )</em></div>
                                                 <div class="card__recu">
-                                                    <div class="card__prix"><?= getEmploye($transaction->id_employe)->noms_prenoms ?> - montant total recu {{ $transaction->totalPrimes }} FCFA</div>
+                                                    <div class="card__prix"><?= getEmploye($transaction->id_employe)->noms_prenoms ?> - montant total recu {{ floor($transaction->totalPrimes) }} FCFA</div>
                                                     <div class="card__list-recu">
                                                         <div class="card__items-recu">
                                                             <strong>Prime A</strong>
-                                                            <span>{{ $transaction->primeA }} F</span>
+                                                            <span>{{ floor($transaction->primeA) }} F</span>
                                                         </div>
                                                         <div class="card__items-recu">
                                                             <strong>Prime B</strong>
-                                                            <span>{{ $transaction->primeB }} F</span>
+                                                            <span>{{ floor($transaction->primeB) }} F</span>
                                                         </div>
                                                         <div class="card__items-recu">
                                                             <strong>Prime C</strong>
-                                                            <span>{{ $transaction->primeC }} F</span>
+                                                            <span>{{ floor($transaction->primeC) }} F</span>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -3019,7 +3019,7 @@
                                             <div class="card__transaction out">
                                                 <div class="card__date">  {{ $transaction->created_at->format('d M Y') }}</div>
                                                 <div class="card__recu">
-                                                    <div class="card__prix"><?= getEmploye($transaction->id_employe)->noms_prenoms ?> ~ montant total rétirer {{ $transaction->montant }} FCFA</div>
+                                                    <div class="card__prix"><?= getEmploye($transaction->id_employe)->noms_prenoms ?> ~ montant total rétirer {{ floor($transaction->montant) }} FCFA</div>
                                                 </div>
                                             </div>   
                         @empty
@@ -3169,7 +3169,7 @@
                                     <!--end::Header-->
                                     <!--begin::Body-->
                                     <div class="card-body pt-0 pb-3">
-                        @empty(!$employeAll)
+                                    @empty(!$employeAll)
                                             <div class="tab-content">
                                                 <!--begin::Table-->
                                                 <div class="table-responsive">
@@ -3209,7 +3209,7 @@
                                                                     </td>
                                                                     <td>
                                                                         <span
-                                                                            class="text-dark-75 font-weight-bolder d-block font-size-lg"><?= getPrimeForEmploye($employe->id) ?></span>
+                                                                            class="text-dark-75 font-weight-bolder d-block font-size-lg"><?= floor(getPrimeForEmploye($employe->id)) ?></span>
                                                                         <span class="text-muted font-weight-bold">FCFA</span>
                                                                     </td>
                                                                     <td>

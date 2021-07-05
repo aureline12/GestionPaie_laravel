@@ -125,15 +125,15 @@
                 <div class="card__list">
                     <div class="card__items">
                         <span>Prime A</span>
-                        <span>{{ $totalPrime['primeA'] }} F</span>
+                        <span>{{ floor($totalPrime['primeA']) }} F</span>
                     </div>
                     <div class="card__items">
                         <span>Prime B</span>
-                        <span>{{ $totalPrime['primeB'] }} F</span>
+                        <span>{{ floor($totalPrime['primeB']) }} F</span>
                     </div>
                     <div class="card__items">
                         <span>Prime C</span>
-                        <span>{{ $totalPrime['primeC'] }} F</span>
+                        <span>{{ floor($totalPrime['primeC']) }} F</span>
                     </div>
                 </div>
                 <form action="/decaisser/{{$employe->id}}" class="inline-block" style="border:none;outline:none;margin:0 auto; width:60%;" method="POST" >
@@ -160,15 +160,15 @@
                                 <div class="card__list-recu">
                                     <div class="card__items-recu">
                                         <strong>Prime A</strong>
-                                        <span>{{ $transaction->primeA }} F</span>
+                                        <span>{{ floor($transaction->primeA) }} F</span>
                                     </div>
                                     <div class="card__items-recu">
                                         <strong>Prime B</strong>
-                                        <span>{{ $transaction->primeB}} F</span>
+                                        <span>{{ floor($transaction->primeB) }} F</span>
                                     </div>
                                     <div class="card__items-recu">
                                         <strong>Prime C</strong>
-                                        <span>{{ $transaction->primeC }} F</span>
+                                        <span>{{ floor($transaction->primeC) }} F</span>
                                     </div>
                                 </div>
                             </div>
@@ -188,7 +188,7 @@
                         <div class="card__transaction out">
                             <div class="card__date">{{ $transaction->created_at->format('d M Y') }}</div>
                             <div class="card__recu">
-                                <div class="card__prix">montant total rétirer {{ $transaction->montant }} FCFA</div>
+                                <div class="card__prix">montant total rétirer {{ floor($transaction->montant) }} FCFA</div>
                             </div>
                         </div>
                     @endforeach
