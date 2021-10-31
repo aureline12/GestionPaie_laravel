@@ -18,12 +18,12 @@ use Illuminate\Support\Facades\Session;
 class EmployeController extends Controller
 {
     public function index(){
-        $employe = DB::table('employe')->where('status', '1')->find(4);
+        $employe = DB::table('employe')->where('status', '1')->get();
        //dd($employe);
          //$employe=Employe::all();
-         
+
         $totalEmploye = count($employe->toArray());
-        
+
         return view('employes.employeIndex' , compact('employe','totalEmploye'));
     }
 
@@ -49,7 +49,7 @@ class EmployeController extends Controller
             'primeCAC'=>$totalPrimeA,
             'primeRemise'=>$totalPrimeB,
             'primeTEL'=>$totalPrimeC
-        ];  
+        ];
         // on recupere toute les transactions entrantes
         $transactoinInt = TransactionInt::join('caisse','transaction_ints.id_caisse','=','caisse.id_caisse')
         ->where('transaction_ints.id_employe',$employe->id)
@@ -62,11 +62,11 @@ class EmployeController extends Controller
 
         return view('employes.employeShow',compact('employe','primeForUser','afficherBtn','totalPrime','totalPrimeCalculer','transactoinInt','transactoinOut'));
     }
-    
+
     public function create(){
         $matricule = Text::num_random(10);
        $secteur = DB::table("secteurs")->pluck("name","id");
-       
+
         return view('employes.employeCreate',compact('matricule' , 'secteur'));
     }
 
@@ -111,14 +111,14 @@ class EmployeController extends Controller
             //a folder->upload and appsetting, and it wil store the images in your file.
             $employe->profile = $filename;
         }
-    
+
         $employe->save();
 
         // on creer le code barre
         $barcode = new Barcode();
         $barcode->employe_id = $employe->id;
         $barcode->save();
-        
+
         Session::flash('statuscode' , 'success');
         return  redirect('/employe')->with('status' , 'Employé ajouté avec succès');
     }
@@ -165,9 +165,9 @@ class EmployeController extends Controller
     }
 
     public function destroy(Request $req , $id){
-        
+
         $employe = Employe::findOrFail($id);
-        
+
         $destination = 'uploads/employes/'.$employe->profile;
 
        /* if(File::exists($destination)){
@@ -188,14 +188,14 @@ class EmployeController extends Controller
         }
     }
 
-   
+
 
     public function myformAjax($name)
     {
         $id = DB::table('secteurs')
                      ->where("name",$name)
                      ->get()[0]->id;
-           
+
         $unite = DB::table("unites")
                     ->where("secteur_id",$id)
                     ->pluck("name","id");
