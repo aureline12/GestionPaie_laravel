@@ -13,9 +13,10 @@ Route::get('/', function () {
 });
 
 Auth::routes();
+
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::group(['middleware' =>['auth' , 'super admin']] , function(){  
+Route::group(['middleware' =>['auth' , 'super admin' ,'revalidate' ]] , function(){  
 
     Route::get('/dash', 'DashboardController@index');
     
@@ -23,7 +24,7 @@ Route::group(['middleware' =>['auth' , 'super admin']] , function(){
     Route::get('/download/{id}/barcode',"BarcodeController@create");
 
     Route::get('/employe', 'EmployeController@index');
-    Route::get('/employe/create', 'EmployeController@create');
+    Route::get('/employe/create', array('as'=>'create','uses'=>'EmployeController@create'));
     Route::post('/employe', 'EmployeController@store');
     Route::get('/employe/{employe}', 'EmployeController@show');
     Route::get('/employe/{employe}/edit', 'EmployeController@edit');
@@ -62,6 +63,8 @@ Route::group(['middleware' =>['auth' , 'super admin']] , function(){
     Route::get('/users/{users}/edit','UserController@edit');
     Route::patch('/users/{users}', 'UserController@update');
     Route::get('/users/delete/{id}', 'UserController@destroy');
+    Route::get('myform','EmployeController@myform');
+    Route::get('myform/ajax/{id}',array('as'=>'myform.ajax','uses'=>'EmployeController@myformAjax'));
 
 });
 

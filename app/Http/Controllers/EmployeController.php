@@ -7,6 +7,7 @@ use App\Models\Employe;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Barcode;
+use App\Models\Secteur;
 use App\Models\TransactionInt;
 use App\Models\TransactionOut;
 use Illuminate\Support\Facades\DB;
@@ -17,10 +18,12 @@ use Illuminate\Support\Facades\Session;
 class EmployeController extends Controller
 {
     public function index(){
-        $employe = DB::table('employe')->where('status', '1')->get();
-       
-        // $employe=Employe::all();
+        $employe = DB::table('employe')->where('status', '1')->find(4);
+       //dd($employe);
+         //$employe=Employe::all();
+         
         $totalEmploye = count($employe->toArray());
+        
         return view('employes.employeIndex' , compact('employe','totalEmploye'));
     }
 
@@ -34,27 +37,27 @@ class EmployeController extends Controller
         $totalPrimeCalculer = 0;
         $afficherBtn = false;
         foreach($primeForEmployes as $prime){
-            $totalPrimeA += ($prime->primeA);
-            $totalPrimeB += ($prime->primeB);
-            $totalPrimeC += ($prime->primeC);
-            $totalPrimeCalculer  += ($prime->primeA + $prime->primeB + $prime->primeC);
-            if($prime->primeA > 0){
+            $totalPrimeA += ($prime->primeCAC);
+            $totalPrimeB += ($prime->primeRemise);
+            $totalPrimeC += ($prime->primeTEL);
+            $totalPrimeCalculer  += ($prime->primeCAC + $prime->primeRemise + $prime->primeTEL);
+            if($prime->primeCAC > 0){
                 $afficherBtn = true;
             }
         }
         $totalPrime = [
-            'primeA'=>$totalPrimeA,
-            'primeB'=>$totalPrimeB,
-            'primeC'=>$totalPrimeC
+            'primeCAC'=>$totalPrimeA,
+            'primeRemise'=>$totalPrimeB,
+            'primeTEL'=>$totalPrimeC
         ];  
         // on recupere toute les transactions entrantes
         $transactoinInt = TransactionInt::join('caisse','transaction_ints.id_caisse','=','caisse.id_caisse')
         ->where('transaction_ints.id_employe',$employe->id)
-        ->orderByDesc('transaction_ints.created_at')->limit(3)->offset(0)->get(['caisse.montant','transaction_ints.totalPrimes','transaction_ints.created_at','transaction_ints.primeA','transaction_ints.primeB','transaction_ints.primeC']);
+        ->orderByDesc('transaction_ints.created_at')->limit(3)->offset(0)->get(['caisse.montant','transaction_ints.totalPrimes','transaction_ints.created_at','transaction_ints.primeCAC','transaction_ints.primeRemise','transaction_ints.primeTEL']);
         $transactoinOut = TransactionOut::limit(3)->where('id_employe',$employe->id)->offset(0)->get();
         $primeForUser   = Employe::join('primes','employe.id','=','primes.id_employe')
                         ->where('employe.id',$employe->id)
-                        ->get(['primes.primeA','primes.primeB','primes.primeC','primes.created_at']);
+                        ->get(['primes.primeCAC','primes.primeRemise','primes.primeTEL','primes.created_at']);
 
 
         return view('employes.employeShow',compact('employe','primeForUser','afficherBtn','totalPrime','totalPrimeCalculer','transactoinInt','transactoinOut'));
@@ -62,7 +65,9 @@ class EmployeController extends Controller
     
     public function create(){
         $matricule = Text::num_random(10);
-        return view('employes.employeCreate',compact('matricule'));
+       $secteur = DB::table("secteurs")->pluck("name","id");
+       
+        return view('employes.employeCreate',compact('matricule' , 'secteur'));
     }
 
     public function store(Request $req)
@@ -78,8 +83,8 @@ class EmployeController extends Controller
             'ville'         =>'required|min:1|max:256',
             'addresse'      =>'required|min:1|max:256',
             'grade'         =>'required',
-            'departement'   =>'required',
-            'poste'         =>'required',
+            'secteur'       =>'required',
+            'unite'         =>'required',
             'sexe'          =>'required'
         ]);
         $employe = new Employe();
@@ -92,8 +97,8 @@ class EmployeController extends Controller
         $employe -> ville= $req->input('ville');
         $employe -> addresse = $req->input('addresse');
         $employe -> grade = $req->input('grade');
-        $employe -> departement = $req->input('departement');
-        $employe -> poste = $req->input('poste');
+        $employe -> secteur = $req->input('secteur');
+        $employe -> unite = $req->input('unite');
         $employe -> sexe = $req->input('sexe');
 
         if ($req->hasfile('profile')) {
@@ -106,6 +111,7 @@ class EmployeController extends Controller
             //a folder->upload and appsetting, and it wil store the images in your file.
             $employe->profile = $filename;
         }
+    
         $employe->save();
 
         // on creer le code barre
@@ -119,7 +125,8 @@ class EmployeController extends Controller
 
     public function edit($id){
         $employe = Employe::find($id);
-        return view('employes.employeEdit',compact('employe'));
+       $secteur = DB::table("secteurs")->pluck("name","id");
+        return view('employes.employeEdit',compact('employe' , 'secteur'));
     }
 
     public function update(Request $req , $id){
@@ -134,8 +141,8 @@ class EmployeController extends Controller
         $employe -> ville= $req->input('ville');
         $employe ->  addresse = $req->input('addresse');
         $employe -> grade = $req->input('grade');
-        $employe->  departement = $req->input('departement');
-        $employe -> poste = $req->input('poste');
+        $employe->  secteur = $req->input('secteur');
+        $employe -> unite = $req->input('unite');
         $employe -> sexe = $req->input('sexe');
 
         if ($req->hasfile('profile')) {
@@ -179,5 +186,19 @@ class EmployeController extends Controller
             ->get();
             echo json_encode(compact('usersSearch'));
         }
+    }
+
+   
+
+    public function myformAjax($name)
+    {
+        $id = DB::table('secteurs')
+                     ->where("name",$name)
+                     ->get()[0]->id;
+           
+        $unite = DB::table("unites")
+                    ->where("secteur_id",$id)
+                    ->pluck("name","id");
+        return json_encode($unite);
     }
 }

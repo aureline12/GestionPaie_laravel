@@ -79,7 +79,7 @@
                                             </div>
 
                                             <div class="form-group row">
-                                                <label class="col-xl-3 col-lg-3 col-form-label">matricule</label>
+                                                <label class="col-xl-3 col-lg-3 col-form-label">Matricule</label>
                                                 <div class="col-lg-9 col-xl-9">
                                                     <input class="disabled form-control form-control-lg form-control-solid @error('matricule') is-invalid @enderror"
                                                         name="matricule" value="{{$matricule ?? old('matricule')}}" type="text" />
@@ -207,9 +207,10 @@
                                                 <div class="col-lg-9 col-xl-9">
                                                     <select name="grade"
                                                         class="form-control form-control-lg form-control-solid @error('grade') is-invalid @enderror">
-                                                        <option value="A">A</option>
-                                                        <option value="B">B</option>
-                                                        <option value="C">C</option>
+                                                        <option value="préposé">Préposé</option>
+                                                        <option value="brigandier">Brigandier</option>
+                                                        <option value="controlleur">Controlleur</option>
+                                                        <option value="inspecteur">Inspecteur</option>
                                                     </select>
                                                     @error('grade') 
                                                         <div class="invalid-feedback" style="background-color:#fff">
@@ -219,35 +220,36 @@
                                                 </div>
                                             </div>
                                             <div class="form-group row">
-                                                <label class="col-xl-3 col-lg-3 col-form-label">Departement</label>
+                                                <label class="col-xl-3 col-lg-3 col-form-label">Secteur</label>
                                                 <div class="col-lg-9 col-xl-9">
-                                                    <select name="departement"
-                                                        class="form-control form-control-lg form-control-solid @error('departement') is-invalid @enderror">
-                                                        <option value="finance">FINANCE</option>
-                                                        <option value="informatique">INFORMATIQUE</option>
-                                                        <option value="marketing">MARKETING</option>
+                                                    <select name="secteur" 
+                                                        class="form-control form-control-lg form-control-solid @error('secteur') is-invalid @enderror">
+                                                        
+                                                                <option value="">--- Selectionnez un Secteur ---</option>
+                                                                @foreach ($secteur as $key => $value)
+                                                                    <option value="{{$value}}">{{ $value }}</option>
+                                                                @endforeach
                                                     </select>
-                                                    @error('departement') 
+                                                    @error('secteur') 
                                                         <div class="invalid-feedback" style="background-color:#fff">
-                                                            {{ $errors->first('departement') }}
+                                                            {{ $errors->first('secteur') }}
                                                         </div>
                                                     @enderror
                                                 </div>
                                             </div>
 
                                             <div class="form-group row">
-                                                <label class="col-xl-3 col-lg-3 col-form-label">Poste</label>
+                                                <label class="col-xl-3 col-lg-3 col-form-label">Unité</label>
                                                 <div class="col-lg-9 col-xl-9">
-                                                    <div class="input-group input-group-lg input-group-solid">
-                                                        <input type="text" value="{{old('poste')}}" placeholder="Entrer le poste de l'employé"
-                                                            class="form-control form-control-lg form-control-solid @error('poste') is-invalid @enderror"
-                                                            name="poste" />
-                                                        @error('poste') 
-                                                            <div class="invalid-feedback" style="background-color:#fff">
-                                                                {{ $errors->first('poste') }}
-                                                            </div>
-                                                        @enderror
-                                                    </div>
+                                                    <select name="unite"
+                                                        class="form-control form-control-lg form-control-solid @error('unite') is-invalid @enderror">
+                                                       
+                                                    </select>
+                                                    @error('unite') 
+                                                        <div class="invalid-feedback" style="background-color:#fff">
+                                                            {{ $errors->first('unite') }}
+                                                        </div>
+                                                    @enderror
                                                 </div>
                                             </div>
 
@@ -307,5 +309,34 @@
     </script>
 
     <script src="assets/js/pages/custom/contacts/add-contact.js"></script>
+    <script src="js/dynamicselect.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+    <script >
+        $(document).ready(function() {
+            $('select[name="secteur"]').on('change', function() {
+                var stateID = $(this).val();
+                if(stateID) {
+                    $.ajax({
+                        url: '/myform/ajax/'+stateID,
+                        type: "GET",
+                        dataType: "json",
+                        success:function(data) {
+    
+                            
+                            $('select[name="unite"]').empty();
+                            $.each(data, function(key, value) {
+                                $('select[name="unite"]').append('<option value="'+value+'">'+ value +'</option>');
+                            });
+    
+    
+                        }
+                    });
+                }else{
+                    $('select[name="unite"]').empty();
+                }
+            });
+        });
+    </script>
 
 @endsection

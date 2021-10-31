@@ -47,9 +47,9 @@ class PrimeController extends Controller
         // on met toutes les primes a 0
         Prime::where('id_employe',$employer->id)
             ->update([
-            'primeA'=>0,
-            'primeB'=>0,
-            'primeC'=>0
+            'primeCAC'=>0,
+            'primeRemise'=>0,
+            'primeTEL'=>0
         ]);
 
         $transactionOut = new TransactionOut();
@@ -57,7 +57,7 @@ class PrimeController extends Controller
         # toute les primes pour un employé
         $totalPrime = 0;
         foreach($primeForEmployes as $primes){
-            $totalPrime += ($primes->primeA + $primes->primeB + $primes->primeC);
+            $totalPrime += ($primes->primeCAC+ $primes->primeRemise + $primes->primeTEL);
         }
 
         // on verifie si on a deja fait une transaction et on met a jour la table total caisse
@@ -123,7 +123,7 @@ class PrimeController extends Controller
         $dejaDecaisser = false;
 
         foreach($primeForEmployes as $prime){
-            if($prime->primeA > 0){
+            if($prime->primeCAC > 0){
                 $dejaDecaisser = true;
                 break;
             }

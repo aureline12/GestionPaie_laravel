@@ -54,27 +54,27 @@ class GestPaieController extends Controller
             $totalPrimeCalculer = 0;
             $afficherBtn = false;
             foreach($primeForEmployes as $prime){
-                $totalPrimeA += ($prime->primeA);
-                $totalPrimeB += ($prime->primeB);
-                $totalPrimeC += ($prime->primeC);
-                $totalPrimeCalculer  += ($prime->primeA + $prime->primeB + $prime->primeC);
+                $totalPrimeA += ($prime->primeCAC);
+                $totalPrimeB += ($prime->primeRemise);
+                $totalPrimeC += ($prime->primeTEL);
+                $totalPrimeCalculer  += ($prime->primeCAC + $prime->primeRemise + $prime->primeTEL);
                 if($prime->primeA > 0){
                     $afficherBtn = true;
                 }
             }
             $totalPrime = [
-                'primeA'=>$totalPrimeA,
-                'primeB'=>$totalPrimeB,
-                'primeC'=>$totalPrimeC
+                'primeCAC'=>$totalPrimeA,
+                'primeRemise'=>$totalPrimeB,
+                'primeTEL'=>$totalPrimeC
             ];  
             // on recupere toute les transactions entrantes
             $transactoinInt = TransactionInt::join('caisse','transaction_ints.id_caisse','=','caisse.id_caisse')
             ->where('transaction_ints.id_employe',$employe[0]->id)
-            ->orderByDesc('transaction_ints.created_at')->limit(3)->offset(0)->get(['caisse.montant','transaction_ints.totalPrimes','transaction_ints.created_at','transaction_ints.primeA','transaction_ints.primeB','transaction_ints.primeC']);
+            ->orderByDesc('transaction_ints.created_at')->limit(3)->offset(0)->get(['caisse.montant','transaction_ints.totalPrimes','transaction_ints.created_at','transaction_ints.primeCAC','transaction_ints.primeRemise','transaction_ints.primeTEL']);
             $transactoinOut = TransactionOut::limit(3)->where('id_employe',$employe[0]->id)->offset(0)->get();
             $primeForUser   = Employe::join('primes','employe.id','=','primes.id_employe')
                             ->where('employe.id',$employe[0]->id)
-                            ->get(['primes.primeA','primes.primeB','primes.primeC','primes.created_at']);
+                            ->get(['primes.primeCAC','primes.primeRemise','primes.primeTEL','primes.created_at']);
             return view('search' , compact('employe','primeForUser','afficherBtn','totalPrime','totalPrimeCalculer','transactoinInt','transactoinOut'));
         }
         return back();

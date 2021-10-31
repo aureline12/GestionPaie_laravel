@@ -64,10 +64,10 @@
                                     <th style="min-width: 200px" class="pl-7">
                                         <span class="text-dark-75">Employé</span>
                                     </th>
-                                    <th style="min-width: 30px">Poste</th>
+                                    <th style="min-width: 30px">Unité</th>
                                     <th style="min-width: 30px">grade</th>
                                     <th style="min-width: 30px">Phone</th>
-                                    <th style="min-width: 30px">Departement</th>
+                                    <th style="min-width: 30px">Secteur</th>
                                     <th class="min-width: 30px">Actions</th>
                                 </tr>
                             </thead>
@@ -88,7 +88,7 @@
                                                     </span>
                                                 </div>
                                                 <div>
-                                                    <a href="#"
+                                                    <a href="employe/{{ $row->id }}"
                                                         class="text-dark-75 font-weight-bolder text-hover-primary mb-1 font-size-lg">{{ $row->noms_prenoms }}</a>
                                                     <span
                                                         class="text-muted font-weight-bold d-block">{{ $row->matricule }}</span>
@@ -98,7 +98,7 @@
 
                                         <td>
                                             <span
-                                                class="text-dark-75 font-weight-bolder d-block font-size-lg">{{ $row->poste }}</span>
+                                                class="text-dark-75 font-weight-bolder d-block font-size-lg">{{ $row->unite }}</span>
 
                                         </td>
                                         <td>
@@ -113,7 +113,7 @@
                                         </td>
                                         <td>
                                             <span
-                                                class="text-dark-75 font-weight-bolder d-block font-size-lg">{{ $row->departement }}</span>
+                                                class="text-dark-75 font-weight-bolder d-block font-size-lg">{{ $row->secteur }}</span>
                                         </td>
                                         <td class="text-right pr-0">
                                             <a href="employe/{{ $row->id }}" class="btn btn-icon btn-light btn-hover-primary btn-sm">

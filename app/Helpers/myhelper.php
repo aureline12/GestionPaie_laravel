@@ -14,7 +14,7 @@ function getPrimeForEmploye($id){
     # toute les primes pour un employé
     $totalPrime = 0;
     foreach($primeEmploye as $primes){
-        $totalPrime += ($primes->primeA + $primes->primeB + $primes->primeC);
+        $totalPrime += ($primes->primeCAC + $primes->primeRemise + $primes->primeTEL);
     }
     return $totalPrime;
 }

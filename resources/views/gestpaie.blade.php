@@ -42,7 +42,7 @@
                 <form class="search__form" method="post" action="/search">
                     @csrf
                     @method('POST')
-                    <input class="search__input" type="text" placeholder="Entrez le matricule de l'employé" name="query">
+                    <input  class="search__input" type="text" placeholder="Entrez le matricule de l'employé" name="query">
                     <button class="search__btn" type="submit"><i class="fas fa-search"></i></button>
                 </form>
             </div>
@@ -60,6 +60,8 @@
             let input = document.querySelector('.search__input')
             let load  = document.querySelector('.load')
             let error = document.querySelector('.error')
+
+            input.focus()
 
             input.addEventListener('keyup', e => {
                 let inputValue = input.value

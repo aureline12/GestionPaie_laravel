@@ -25,7 +25,7 @@
                 <hr>
                 <div class="row mt-4">
                     <div class="col-md-4">
-                        <label for="">nom/prenom</label>
+                        <label for="">Nom/Prenom</label>
                         <div class="card__label form-group p-3">
                             {{ $employe[0]->noms_prenoms }}
                         </div>
@@ -37,7 +37,7 @@
                         </div>
                     </div>
                     <div class="col-md-4">
-                        <label for="">téléphone</label>
+                        <label for="">Téléphone</label>
                         <div class="card__label form-group p-3">
                             {{ $employe[0]->telephone }}
                         </div>
@@ -65,19 +65,19 @@
                 </div>
                 <div class="row">
                     <div class="col-md-4">
-                        <label for="">cni</label>
+                        <label for="">CNI</label>
                         <div class="card__label form-group p-3">
                             {{ $employe[0]->cni }}
                         </div>
                     </div>
                     <div class="col-md-4">
-                        <label for="">date de naissance</label>
+                        <label for="">Date de Naissance</label>
                         <div class="card__label form-group p-3">
                             {{ $employe[0]->date_naissance }}
                         </div>
                     </div>
                     <div class="col-md-4">
-                        <label for="">poste</label>
+                        <label for="">Poste</label>
                         <div class="card__label form-group p-3">
                             {{ $employe[0]->poste }}
                         </div>
@@ -85,13 +85,13 @@
                 </div>
                 <div class="row">
                     <div class="col-md-4">
-                        <label for="">grade</label>
+                        <label for="">Grade</label>
                         <div class="card__label form-group p-3">
                             {{ $employe[0]->grade }}
                         </div>
                     </div>
                     <div class="col-md-4">
-                        <label for="">departement</label>
+                        <label for="">Departement</label>
                         <div class="card__label form-group p-3">
                             {{ $employe[0]->departement }}
                         </div>
@@ -110,21 +110,21 @@
             </div>
             <div class="col-md-4 card p-4 m-4">
                 <div class="card__montant">
-                    <span class="card__prime">total prime</span>
+                    <span class="card__prime">Total Prime</span>
                     {{$totalPrimeCalculer}} F
                 </div>
                 <div class="card__list">
                     <div class="card__items">
-                        <span>Prime A</span>
-                        <span>{{ $totalPrime['primeA'] }} F</span>
+                        <span>Prime CAC</span>
+                        <span>{{ $totalPrime['primeCAC'] }} F</span>
                     </div>
                     <div class="card__items">
-                        <span>Prime B</span>
-                        <span>{{ $totalPrime['primeB'] }} F</span>
+                        <span>Prime Remise</span>
+                        <span>{{ $totalPrime['primeRemise'] }} F</span>
                     </div>
                     <div class="card__items">
-                        <span>Prime C</span>
-                        <span>{{ $totalPrime['primeC'] }} F</span>
+                        <span>Prime TEL</span>
+                        <span>{{ $totalPrime['primeTEL'] }} F</span>
                     </div>
                 </div>
                 <form action="/decaisser/{{$employe[0]->id}}" class="inline-block" style="border:none;outline:none;margin:0 auto; width:60%;" method="POST" >
@@ -150,16 +150,16 @@
                                 <div class="card__prix">montant total recu {{ $transaction->totalPrimes }} FCFA</div>
                                 <div class="card__list-recu">
                                     <div class="card__items-recu">
-                                        <strong>Prime A</strong>
-                                        <span>{{ $transaction->primeA }} F</span>
+                                        <strong>Prime CAC</strong>
+                                        <span>{{ $transaction->primeCAC }} F</span>
                                     </div>
                                     <div class="card__items-recu">
-                                        <strong>Prime B</strong>
-                                        <span>{{ $transaction->primeB}} F</span>
+                                        <strong>Prime Remise</strong>
+                                        <span>{{ $transaction->primeRemise}} F</span>
                                     </div>
                                     <div class="card__items-recu">
-                                        <strong>Prime C</strong>
-                                        <span>{{ $transaction->primeC }} F</span>
+                                        <strong>Prime TEL</strong>
+                                        <span>{{ $transaction->primeTEL }} F</span>
                                     </div>
                                 </div>
                             </div>

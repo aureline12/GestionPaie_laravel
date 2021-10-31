@@ -94,18 +94,18 @@ class CaisseController extends Controller
         foreach($employes as $employe){
             $prime = new Prime();
             
-            $prime->primeA = $mtPrimeA;
-            $prime->primeB = $mtPrimeB;
-            $prime->primeC = $mtPrimeC;
+            $prime->primeCAC = $mtPrimeA;
+            $prime->primeRemise = $mtPrimeB;
+            $prime->primeTEL = $mtPrimeC;
             $prime->id_employe = $employe->id;
             $prime->id_caisse = $caisse->id;
             $prime->save();
 
             $transactionInt = new TransactionInt();
             
-            $transactionInt->primeA = $mtPrimeA;
-            $transactionInt->primeB = $mtPrimeB;
-            $transactionInt->primeC = $mtPrimeC;
+            $transactionInt->primeCAC = $mtPrimeA;
+            $transactionInt->primeRemise= $mtPrimeB;
+            $transactionInt->primeTEL = $mtPrimeC;
             $transactionInt->totalPrimes = $mtEmploye;
             $transactionInt->id_employe = $employe->id;
             $transactionInt->id_caisse = $caisse->id;

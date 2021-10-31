@@ -162,31 +162,44 @@
                             <div class="col-lg-9 col-xl-9">
                                 <select name="grade" class="form-control form-control-lg form-control-solid"
                                     value="{{ $employe->grade }}">
-                                    <option value="A">A</option>
-                                    <option value="B">B</option>
-                                    <option value="C">C</option>
+                                    <option value="préposé" @if($employe->grade === "préposé")selected @endif>Préposé</option>
+                                    <option value="brigandier" @if($employe->grade === "brigandier")selected @endif>Brigandier</option>
+                                    <option value="controlleur" @if($employe->grade === "controlleur")selected @endif>Controlleur</option>
+                                    <option value="inspecteur" @if($employe->grade === "inspecteur")selected @endif>Inspecteur</option>
                                 </select>
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label class="col-xl-3 col-lg-3 col-form-label">Departement</label>
+                            <label class="col-xl-3 col-lg-3 col-form-label">Secteur</label>
                             <div class="col-lg-9 col-xl-9">
-                                <select name="departement" class="form-control form-control-lg form-control-solid"
-                                    value="{{ $employe->departement }}">
-                                    <option value="finance">FINANCE</option>
-                                    <option value="informatique">INFORMATIQUE</option>
-                                    <option value="marketing">MARKETING</option>
-                                </select>
+                                <select name="secteur" class="form-control form-control-lg form-control-solid"
+                                    value="{{ $employe->secteur}}">
+                                    
+                                    <option value="">--- Selectionnez un Secteur ---</option>
+                                    @foreach ($secteur as $key => $value)
+                                        <option value="{{$value}}" @if($value ===  $employe->secteur)selected @endif>{{ $value }}</option>
+                                    @endforeach
+                        </select>
+                        @error('secteur') 
+                            <div class="invalid-feedback" style="background-color:#fff">
+                                {{ $errors->first('secteur') }}
                             </div>
-                        </div>
+                        @enderror
+                    </div>
+                </div>
 
                         <div class="form-group row">
-                            <label class="col-xl-3 col-lg-3 col-form-label">Poste</label>
+                            <label class="col-xl-3 col-lg-3 col-form-label">Unité</label>
                             <div class="col-lg-9 col-xl-9">
-                                <div class="input-group input-group-lg input-group-solid">
-                                    <input type="text" class="form-control form-control-lg form-control-solid" name="poste"
-                                        value="{{ $employe->poste }}" />
-                                </div>
+                                <select name="unite" id="unite"
+                                    class="form-control form-control-lg form-control-solid @error('unite') is-invalid @enderror" value="{{ $employe->unite}}">
+                                    
+                                </select>
+                                @error('unite') 
+                                    <div class="invalid-feedback" style="background-color:#fff">
+                                        {{ $errors->first('unite') }}
+                                    </div>
+                                @enderror
                             </div>
                         </div>
 
@@ -195,8 +208,8 @@
                             <div class="col-lg-9 col-xl-9">
                                 <select name="sexe" class="form-control form-control-lg form-control-solid"
                                     value="{{ $employe->sexe }}">
-                                    <option value="homme">homme</option>
-                                    <option value="femme">femme</option>
+                                    <option value="homme" @if($employe->sexe === "homme")selected @endif  >homme</option>
+                                    <option value="femme" @if($employe->sexe === "femme")selected @endif>femme</option>
                                 </select>
                             </div>
                         </div>
@@ -217,5 +230,60 @@
 
 
 @section('scripts')
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+<script >
+    $(document).ready(function() {
+
+        var stateID = $('select[name="secteur"]').val();
+            if(stateID) {
+                $.ajax({
+                    url: '/myform/ajax/'+stateID,
+                    type: "GET",
+                    dataType: "json",
+                    success:function(data) {
+
+                        
+                        $('select[name="unite"]').empty();
+                        $.each(data, function(key, value) {
+                            $('select[name="unite"]').append('<option value="'+value+'">'+ value +'</option>');
+                        });
+
+
+                    }
+                });
+            }else{
+                $('select[name="unite"]').empty();
+            }
+
+        $('select[name="secteur"]').on('change', function() {
+            var stateID = $(this).val();
+            if(stateID) {
+                $.ajax({
+                    url: '/myform/ajax/'+stateID,
+                    type: "GET",
+                    dataType: "json",
+                    success:function(data) {
+
+                        
+                        $('select[name="unite"]').empty();
+                        $.each(data, function(key, value) {
+                            $('select[name="unite"]').append('<option value="'+value+'">'+ value +'</option>');
+                        });
+
+
+                    }
+                });
+            }else{
+                $('select[name="unite"]').empty();
+            }
+        });
+    });
+</script>
+
+
+<script src="js/dynamicselect.js"></script>
+
 
 @endsection
